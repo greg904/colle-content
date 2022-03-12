@@ -88,7 +88,9 @@ fn extract_exercise_numbers(doc: &PdfDocument) -> Result<Vec<i32>, mupdf::Error>
                         Ok(val) => val,
                         Err(_) => continue,
                     };
-                res.push(exercise_number);
+                if !res.contains(&exercise_number) {
+                    res.push(exercise_number);
+                }
             }
         }
     }
